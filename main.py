@@ -38,5 +38,5 @@ plt.plot(r, color="black")  # low frquency
 plt.grid()
 plt.show()
 
-
+print("new")
 #r - новая функция, засунуть в peak и т.д., пока не станет монотонной
