@@ -10,7 +10,6 @@ def invert(data):
         dat2.append(i * -1)
     return dat2
 
-
 def peak(data, data2, flag):
     dd = []  # Индексы значений
     ddd = []  # Значения
@@ -56,8 +55,6 @@ def peak(data, data2, flag):
         plt.plot([dd], [ddd], color='blue', marker='o')  # max
         plt.plot([zz], [zzz], color='green', marker='o')  # min
         plt.legend(['data', 'avg', 'interpolate_max', 'interpolate_min', 'max_peak', 'min_peak'])
-        # plt.figure(2)
-        # plt.plot(h1, color="blue", )
         plt.grid()
         plt.show()
 
