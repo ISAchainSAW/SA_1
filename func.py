@@ -10,6 +10,7 @@ def invert(data):
         dat2.append(i * -1)
     return dat2
 
+
 def peak(data, data2, flag):
     dd = []  # Индексы значений
     ddd = []  # Значения
@@ -45,7 +46,7 @@ def peak(data, data2, flag):
     for i in range(len(data)):
         h1.append(data[i] - m[i])
 
-    if flag == True:
+    if flag:
         # Строим график
         plt.figure(1)
         plt.plot(data, color="red")  # data
