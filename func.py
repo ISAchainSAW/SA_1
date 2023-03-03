@@ -16,32 +16,24 @@ def peak(data, data2, flag):
     ddd = []  # Значения
     zz = []
     zzz = []
+
     # Найти пики
     for i in find_peaks(data2):
         for j in i:
             zz.append(j)
-
-    # Взять значение пиков
-    for i in range(len(data2)):
-        for j in zz:
-            if i == j:
-                zzz.append(data[i])
+            zzz.append(data[j])
     # Найти пики
     for i in find_peaks(data):
         for j in i:
             dd.append(j)
+            ddd.append(data[j])
 
-    # Взять значение пиков
-    for i in range(len(data)):
-        for j in dd:
-            if i == j:
-                ddd.append(data[i])
     # Сплайны
     spl = splrep(dd, ddd)
-    x1 = np.linspace(0, 41, 42)
+    x1 = np.linspace(0, len(data), len(data))
     y1 = splev(x1, spl)
     spl2 = splrep(zz, zzz)
-    x2 = np.linspace(0, 41, 42)
+    x2 = np.linspace(0, len(data), len(data))
     y2 = splev(x2, spl2)
 
     # Линия тренда
@@ -64,13 +56,12 @@ def peak(data, data2, flag):
         plt.plot([dd], [ddd], color='blue', marker='o')  # max
         plt.plot([zz], [zzz], color='green', marker='o')  # min
         plt.legend(['data', 'avg', 'interpolate_max', 'interpolate_min', 'max_peak', 'min_peak'])
-        plt.figure(2)
-        plt.plot(h1, color="blue", )
+        # plt.figure(2)
+        # plt.plot(h1, color="blue", )
         plt.grid()
         plt.show()
 
     tmp = 0  # Дельта
     for i in range(len(data)):
-        # print(h1[i],data[i])
         tmp += (abs(h1[i] - data[i]) ** 2 / data[i] ** 2)
     return h1, tmp
