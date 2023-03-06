@@ -12,11 +12,11 @@ def end(data):
     h, xx = peak(data, pay_len, data2, False)  # xx -> Дельта h - приближение
     if xx < 0.1:  # Эпсилон
         c = h.copy()
-    print(xx)
+    # print(xx)
     while flag:
         data2 = invert(h)
         h, xx = peak(h, pay_len, data2, False)
-        print(xx)
+        # print(xx)
         if xx < 0.1:  # Эпсилон
             c = h.copy()
             flag = False
@@ -24,6 +24,7 @@ def end(data):
     # Вычисление функции r -> новых данных
     for i in range(len(data)):
         r.append(data[i] - c[i])
+
     plt.subplot(211)
     plt.title('c(t)')
     plt.plot(c, color="red")  # high frquency
@@ -47,6 +48,7 @@ plt.plot(a1, color='red')
 plt.plot(a2, color='brown')
 plt.plot(a3, color='blue')
 plt.plot(a4, color='orange')
+plt.legend(['data', 'r1', 'r2', 'r3', 'r4'])
 plt.grid()
 plt.show()
 
@@ -55,5 +57,28 @@ for i in range(len(data)):
 
 plt.plot(data, color='Black')
 plt.plot(tmp, color='blue', linestyle='--')
+plt.legend(['data', 'recover_data'])
+plt.grid()
+plt.show()
+
+plt.subplot(511)
+plt.title('data(t)')
+plt.grid()
+plt.plot(data, color='Black')
+plt.subplot(512)
+plt.title('c1(t)')
+plt.grid()
+plt.plot(a1, color='red')
+plt.subplot(513)
+plt.title('c2(t)')
+plt.grid()
+plt.plot(a2, color='brown')
+plt.subplot(514)
+plt.title('c3(t)')
+plt.grid()
+plt.plot(a3, color='blue')
+plt.subplot(515)
+plt.title('r4(t)')
+plt.plot(c4, color='orange')
 plt.grid()
 plt.show()
